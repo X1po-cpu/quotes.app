@@ -9,6 +9,18 @@ function loadQuotes() {
     const li = document.createElement('li');
     li.classList.add('quote-item');
     li.textContent = q;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.textContent = 'Supprimer';
+    deleteBtn.addEventListener('click', () => {
+      const quotes = JSON.parse(localStorage.getItem('quotes') || '[]');
+      quotes.splice(i, 1);
+      localStorage.setItem('quotes', JSON.stringify(quotes));
+      loadQuotes();
+    });
+
+    li.appendChild(deleteBtn);
     list.appendChild(li);
   });
 }
