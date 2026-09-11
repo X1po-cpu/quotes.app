@@ -7,6 +7,7 @@ function loadQuotes() {
   list.innerHTML = '';
   quotes.forEach((q, i) => {
     const li = document.createElement('li');
+    li.classList.add('quote-item');
     li.textContent = q;
     list.appendChild(li);
   });
